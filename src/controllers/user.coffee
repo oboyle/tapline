@@ -55,7 +55,7 @@ creationSchema = jsonGate.createSchema
             required: true
         name:
             type: 'string'
-            required: true
+            required: false
             pattern: USERNAME_RE
         image:
             type: 'string'
@@ -188,7 +188,7 @@ userController.create = (req, res) ->
         if err then return res.send(400, err.toString())
 
         u = new User
-            name: data.name
+            name: data.email
             email: data.email
             following: data.following
             image: data.image or gravatar.url data.email, {s: 'SIZE', d: 'retro'}

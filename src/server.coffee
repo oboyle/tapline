@@ -189,6 +189,9 @@ app.get '/account/authorize/facebook/callback', loginController.login('facebook'
 app.get '/account/authorize/google', passport.authenticate('google', scope: 'openid email profile')
 app.get '/account/authorize/google/callback', loginController.login('google')
 
+app.get '/account/register', accountController.registerPage
+app.post '/account/register', userController.create
+
 app.get '/', (req, res) ->
     res.status(200).sendfile "#{path.dirname(__dirname)}/public/apidoc.html"
 
